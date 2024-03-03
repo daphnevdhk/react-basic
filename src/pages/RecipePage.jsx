@@ -12,11 +12,11 @@ import {
   useColorModeValue,
   List,
   ListItem,
-  Wrap,
 } from "@chakra-ui/react";
 import { Tags } from "../components/Tags";
 import { SideBySideCollection } from "../components/recipePage/SideBySideItemCollection";
 import { TopicTitle } from "../components/recipePage/TopicTitle";
+import { NutrientDetails } from "../components/recipePage/NutrientDetails";
 
 export const RecipePage = ({ recipe, onClose }) => {
   return (
@@ -104,6 +104,18 @@ export const RecipePage = ({ recipe, onClose }) => {
               title="ingredients"
               items={recipe.ingredientLines}
             />
+
+            <Box>
+              <TopicTitle title="Details" />
+              <List spacing={2}>
+                <NutrientDetails nutrient={recipe.totalNutrients.ENERC_KCAL} />
+                <NutrientDetails nutrient={recipe.totalNutrients.PROCNT} />
+                <NutrientDetails nutrient={recipe.totalNutrients.FAT} />
+                <NutrientDetails nutrient={recipe.totalNutrients.CHOCDF} />
+                <NutrientDetails nutrient={recipe.totalNutrients.CHOLE} />
+                <NutrientDetails nutrient={recipe.totalNutrients.NA} />
+              </List>
+            </Box>
 
             <SideBySideCollection
               title="Health labels"
