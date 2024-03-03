@@ -1,11 +1,20 @@
-import { Stack, Badge } from "@chakra-ui/react";
+import { Stack, Tag, Text } from "@chakra-ui/react";
 
-export const Tags = ({ tags, color }) => {
+export const Tags = ({ tags, color, title }) => {
+  const renderedTitle = title ? <Text>{`${title}: `}</Text> : "";
+
   const renderedTags = tags.map((caution) => (
-    <Badge key={caution} colorScheme={color}>
+    <Tag key={caution} colorScheme={color}>
       {caution}
-    </Badge>
+    </Tag>
   ));
 
-  return renderedTags ? <Stack direction="row">{renderedTags}</Stack> : <></>;
+  return renderedTags.length > 0 ? (
+    <Stack direction="row">
+      {renderedTitle}
+      {renderedTags}
+    </Stack>
+  ) : (
+    <></>
+  );
 };

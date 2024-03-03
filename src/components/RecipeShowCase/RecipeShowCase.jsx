@@ -10,7 +10,8 @@ import {
   ButtonGroup,
   Button,
 } from "@chakra-ui/react";
-import { Tags } from "./Tags";
+import { Tags } from "../Tags";
+import { HealthTags } from "./HealthTags";
 
 export const RecipeShowCase = ({ recipe }) => {
   return (
@@ -25,10 +26,11 @@ export const RecipeShowCase = ({ recipe }) => {
         />
         <Stack mt="6" spacing="3">
           <Heading size="md">{recipe.label}</Heading>
-          <Tags tags={recipe.mealType} color="blue" />
-          <Tags tags={recipe.dishType} color="blue" />
-          <Tags tags={recipe.dietLabels} color="blue" />
-          <Tags tags={recipe.cautions} color="red" />
+          <Tags title="Meal Type" tags={recipe.mealType} color="blue" />
+          <Tags title="Dish" tags={recipe.dishType} color="blue" />
+          <Tags title="Diet" tags={recipe.dietLabels} color="blue" />
+          <HealthTags tags={recipe.healthLabels} />
+          <Tags title="Cautions" tags={recipe.cautions} color="red" />
           <Text color="blue.600" fontSize="2xl">
             $450
           </Text>
