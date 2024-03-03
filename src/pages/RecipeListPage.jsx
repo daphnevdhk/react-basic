@@ -1,13 +1,13 @@
-import { Heading, Box, Grid, GridItem } from "@chakra-ui/react";
+import { Heading, Box, Grid, GridItem, SimpleGrid } from "@chakra-ui/react";
 import { RecipeShowCase } from "../components/RecipeShowCase";
 import { data } from "../utils/data";
 
 export const RecipeListPage = () => {
-  const renderedReRecipes = data.hits.map((recipe) => {
+  const renderedReRecipes = data.hits.map((recipeHolder) => {
     return (
-      <GridItem w="100%" key={recipe.label}>
-        <RecipeShowCase recipe={recipe} />
-      </GridItem>
+      <Box w="100%" key={recipeHolder.recipe.label}>
+        <RecipeShowCase recipe={recipeHolder.recipe} />
+      </Box>
     );
   });
   return (
@@ -16,9 +16,9 @@ export const RecipeListPage = () => {
         <Heading>I'm a Heading</Heading>
       </Box>
       <Box m={2}>
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+        <SimpleGrid minChildWidth="300px" spacing="20px">
           {renderedReRecipes}
-        </Grid>
+        </SimpleGrid>
       </Box>
     </div>
   );
