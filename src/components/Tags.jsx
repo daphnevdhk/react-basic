@@ -1,10 +1,15 @@
 import { Stack, Tag, Text } from "@chakra-ui/react";
 
 export const Tags = ({ tags, color, title }) => {
+  if (!tags) {
+    console.log(tags);
+    return <></>;
+  }
+
   const renderedTitle = title ? <Text>{`${title}: `}</Text> : "";
 
-  const renderedTags = tags.map((caution) => (
-    <Tag key={caution} colorScheme={color}>
+  const renderedTags = tags.map((caution, index) => (
+    <Tag key={index} colorScheme={color}>
       {caution}
     </Tag>
   ));

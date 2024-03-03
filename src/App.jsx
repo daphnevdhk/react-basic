@@ -29,19 +29,31 @@ export const App = () => {
     setRecipes(matchingRecipes);
   };
 
+  const onRecipesClicked = (recipe) => {
+    setSelectedRecipe(recipe);
+  };
+
+  const onClose = () => {
+    setSelectedRecipe(null);
+  };
+
   return (
     <div>
       <Box bg="red">
         <Heading>I'm a Heading</Heading>
       </Box>
-      <div>
-        <Search onSearch={onSearch} />
-      </div>
+
       <div>
         {selectedRecipe == null ? (
-          <RecipeListPage recipes={recipes} />
+          <div>
+            <Search onSearch={onSearch} />
+            <RecipeListPage
+              recipes={recipes}
+              onRecipesClicked={onRecipesClicked}
+            />
+          </div>
         ) : (
-          <RecipePage recipe={selectedRecipe} />
+          <RecipePage recipe={selectedRecipe} onClose={onClose} />
         )}
       </div>
     </div>

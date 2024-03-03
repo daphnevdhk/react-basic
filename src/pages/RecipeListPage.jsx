@@ -1,10 +1,14 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
 import { RecipeShowCase } from "../components/RecipeShowCase/RecipeShowCase";
 
-export const RecipeListPage = ({ recipes }) => {
+export const RecipeListPage = ({ recipes, onRecipesClicked }) => {
   const renderedReRecipes = recipes.map((recipeHolder) => {
     return (
-      <Box w="100%" key={recipeHolder.recipe.label}>
+      <Box
+        w="100%"
+        key={recipeHolder.recipe.label}
+        onClick={() => onRecipesClicked(recipeHolder.recipe)}
+      >
         <RecipeShowCase recipe={recipeHolder.recipe} />
       </Box>
     );
