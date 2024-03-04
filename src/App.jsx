@@ -1,6 +1,6 @@
 import { RecipeListPage } from "./pages/RecipeListPage";
 import { RecipePage } from "./pages/RecipePage";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import { data } from "./utils/data";
 import { useState } from "react";
 import { Search } from "./components/Search";
@@ -38,24 +38,26 @@ export const App = () => {
   };
 
   return (
-    <div>
-      <Box bg="red">
-        <Heading>I'm a Heading</Heading>
-      </Box>
-
-      <div>
-        {selectedRecipe == null ? (
-          <div>
+    <>
+      {selectedRecipe == null ? (
+        <>
+          <Box textAlign="center" pt={10} px={6}>
+            <Heading as="h2" size="xl" mt={6} mb={2}>
+              Winc Recipe Checker
+            </Heading>
             <Search onSearch={onSearch} />
-            <RecipeListPage
-              recipes={recipes}
-              onRecipesClicked={onRecipesClicked}
-            />
-          </div>
-        ) : (
-          <RecipePage recipe={selectedRecipe} onClose={onClose} />
-        )}
-      </div>
-    </div>
+          </Box>
+
+          <RecipeListPage
+            pt={5}
+            px={6}
+            recipes={recipes}
+            onRecipesClicked={onRecipesClicked}
+          />
+        </>
+      ) : (
+        <RecipePage recipe={selectedRecipe} onClose={onClose} />
+      )}
+    </>
   );
 };
