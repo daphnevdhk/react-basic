@@ -1,11 +1,12 @@
-import { Text, useColorModeValue } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 
 export const TopicTitle = ({ title }) => (
   <Text
-    fontSize={{ base: "16px", lg: "18px" }}
-    color={useColorModeValue("yellow.500", "yellow.300")}
-    fontWeight={"500"}
+    color={"green.500"}
     textTransform={"uppercase"}
+    fontWeight={800}
+    letterSpacing={1.1}
+    fontSize={{ base: "16px", lg: "18px" }}
     mb={"4"}
   >
     {title}

@@ -130,8 +130,8 @@ export const RecipePage = ({ recipe, onClose }) => {
             mt={8}
             size={"lg"}
             py={"7"}
-            bg={useColorModeValue("gray.900", "gray.50")}
-            color={useColorModeValue("white", "gray.900")}
+            bg={"green.500"}
+            color={"white"}
             textTransform={"uppercase"}
             _hover={{
               transform: "translateY(2px)",
