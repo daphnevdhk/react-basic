@@ -20,8 +20,12 @@ export const RecipeShowCase = ({ recipe, ...rest }) => {
       boxShadow={"2xl"}
       rounded={"md"}
       p={6}
-      {...rest}
+      _hover={{
+        transform: "translateY(2px)",
+        boxShadow: "lg",
+      }}
       overflow={"hidden"}
+      {...rest}
     >
       <Box h={"210px"} bg={"gray.100"} mt={-6} mx={-6} mb={6} pos={"relative"}>
         <Image
