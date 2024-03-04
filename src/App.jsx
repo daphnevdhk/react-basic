@@ -1,6 +1,6 @@
 import { RecipeListPage } from "./pages/RecipeListPage";
 import { RecipePage } from "./pages/RecipePage";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
 import { data } from "./utils/data";
 import { useState } from "react";
 import { Search } from "./components/Search";
@@ -42,7 +42,14 @@ export const App = () => {
       {selectedRecipe == null ? (
         <>
           <Box textAlign="center" pt={10} px={6}>
-            <Heading as="h2" size="xl" mt={6} mb={2}>
+            <Heading
+              as="h2"
+              size="xl"
+              mt={6}
+              mb={2}
+              color={useColorModeValue("gray.700", "white")}
+              fontFamily={"body"}
+            >
               Winc Recipe Checker
             </Heading>
             <Search onSearch={onSearch} />
