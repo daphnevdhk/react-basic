@@ -4,13 +4,11 @@ import { RecipeShowCase } from "../components/RecipeShowCase/RecipeShowCase";
 export const RecipeListPage = ({ recipes, onRecipesClicked, ...rest }) => {
   const renderedReRecipes = recipes.map((recipeHolder) => {
     return (
-      <Box
-        w="100%"
+      <RecipeShowCase
         key={recipeHolder.recipe.label}
         onClick={() => onRecipesClicked(recipeHolder.recipe)}
-      >
-        <RecipeShowCase recipe={recipeHolder.recipe} />
-      </Box>
+        recipe={recipeHolder.recipe}
+      />
     );
   });
   return (
