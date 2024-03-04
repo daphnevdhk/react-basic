@@ -1,4 +1,4 @@
-import { Box, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import { RecipeShowCase } from "../components/RecipeShowCase/RecipeShowCase";
 
 export const RecipeListPage = ({ recipes, onRecipesClicked, ...rest }) => {
@@ -12,10 +12,8 @@ export const RecipeListPage = ({ recipes, onRecipesClicked, ...rest }) => {
     );
   });
   return (
-    <Box {...rest}>
-      <SimpleGrid minChildWidth="300px" spacing="20px">
-        {renderedReRecipes}
-      </SimpleGrid>
-    </Box>
+    <SimpleGrid minChildWidth="300px" spacing="20px" {...rest}>
+      {renderedReRecipes}
+    </SimpleGrid>
   );
 };
