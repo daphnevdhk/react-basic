@@ -4,11 +4,15 @@ import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
 import { data } from "./utils/data";
 import { useState } from "react";
 import { Search } from "./components/Search";
+import { HealthLabelsFilter } from "./components/HealthLabelsFilter";
 
 export const App = () => {
   // Your state code here
   const [recipes, setRecipes] = useState(data.hits);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [veganSelected, setVeganSelected] = useState(false);
+  const [vegetarianSelected, setVegetarianSelected] = useState(false);
+  const [pescetarianSelected, setPescetarianSelected] = useState(false);
 
   const onSearch = (text) => {
     let matchingRecipes = data.hits;
@@ -53,6 +57,12 @@ export const App = () => {
               Winc Recipe Checker
             </Heading>
             <Search onSearch={onSearch} />
+            <HealthLabelsFilter
+              mt={2}
+              onVeganSelected={setVeganSelected}
+              onVegetarianSelected={setVeganSelected}
+              onPescetarianSelected={setPescetarianSelected}
+            />
           </Box>
 
           <RecipeListPage

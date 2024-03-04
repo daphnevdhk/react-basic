@@ -10,7 +10,7 @@ export const Search = ({ onSearch, ...rest }) => {
     <Box {...rest}>
       <InputGroup>
         <InputLeftElement pointerEvents="none">
-          <SearchIcon color="gray.300" />
+          <SearchIcon color="green.500" />
         </InputLeftElement>
         <Input placeholder="vegan" onChange={onChange} />
       </InputGroup>
