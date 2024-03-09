@@ -8,29 +8,21 @@ import { HealthLabelsFilter } from "./components/HealthLabelsFilter";
 
 export const App = () => {
   // Your state code here
-  const [recipes, setRecipes] = useState(data.hits);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [veganSelected, setVeganSelected] = useState(false);
   const [vegetarianSelected, setVegetarianSelected] = useState(false);
   const [pescetarianSelected, setPescetarianSelected] = useState(false);
+  const [search, setSearch] = useState(null);
+
+  const matchText = (a, b) => a.toLowerCase().includes(b.toLowerCase());
+
+  const matchByLabel = (recipe, text) => matchText(recipe.label, text);
+
+  const matchByHealthLabels = (recipe, text) =>
+    recipe.healthLabels.some((label) => matchText(label, text));
 
   const onSearch = (text) => {
-    let matchingRecipes = data.hits;
-
-    const matchText = (a, b) => a.toLowerCase().includes(b.toLowerCase());
-
-    const matchByLabel = ({ recipe }) => matchText(recipe.label, text);
-
-    const matchByTag = ({ recipe }) =>
-      recipe.healthLabels.some((label) => matchText(label, text));
-
-    if (text) {
-      matchingRecipes = data.hits.filter(
-        (recipe) => matchByLabel(recipe) || matchByTag(recipe)
-      );
-    }
-
-    setRecipes(matchingRecipes);
+    setSearch(text);
   };
 
   const onRecipesClicked = (recipe) => {
@@ -40,6 +32,26 @@ export const App = () => {
   const onClose = () => {
     setSelectedRecipe(null);
   };
+
+  let matchingRecipes = data.hits;
+
+  if (veganSelected || vegetarianSelected || pescetarianSelected) {
+    matchingRecipes = matchingRecipes.filter(
+      ({ recipe }) =>
+        (veganSelected && matchByHealthLabels(recipe, "vegan")) ||
+        (vegetarianSelected && matchByHealthLabels(recipe, "vegetarian")) ||
+        (pescetarianSelected && matchByHealthLabels(recipe, "pescetarian"))
+    );
+  }
+
+  if (search) {
+    matchingRecipes = matchingRecipes.filter(({ recipe }) => {
+      console.log(recipe);
+      return (
+        matchByLabel(recipe, search) || matchByHealthLabels(recipe, search)
+      );
+    });
+  }
 
   return (
     <>
@@ -60,7 +72,7 @@ export const App = () => {
             <HealthLabelsFilter
               mt={2}
               onVeganSelected={setVeganSelected}
-              onVegetarianSelected={setVeganSelected}
+              onVegetarianSelected={setVegetarianSelected}
               onPescetarianSelected={setPescetarianSelected}
             />
           </Box>
@@ -68,7 +80,7 @@ export const App = () => {
           <RecipeListPage
             pt={5}
             px={6}
-            recipes={recipes}
+            recipes={matchingRecipes}
             onRecipesClicked={onRecipesClicked}
           />
         </>
