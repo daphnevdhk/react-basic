@@ -12,7 +12,11 @@ export const Search = ({ onSearch, ...rest }) => {
         <InputLeftElement pointerEvents="none">
           <SearchIcon color="green.500" />
         </InputLeftElement>
-        <Input placeholder="vegan" onChange={onChange} />
+        <Input
+          placeholder="vegan"
+          onChange={onChange}
+          focusBorderColor="green.500"
+        />
       </InputGroup>
     </Box>
   );

@@ -14,6 +14,7 @@ export const App = () => {
   const [pescetarianSelected, setPescetarianSelected] = useState(false);
   const [search, setSearch] = useState(null);
 
+  //Functions
   const matchText = (a, b) => a.toLowerCase().includes(b.toLowerCase());
 
   const matchByLabel = (recipe, text) => matchText(recipe.label, text);
@@ -33,6 +34,7 @@ export const App = () => {
     setSelectedRecipe(null);
   };
 
+  //consts
   let matchingRecipes = data.hits;
 
   if (veganSelected || vegetarianSelected || pescetarianSelected) {
