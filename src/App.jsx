@@ -47,12 +47,10 @@ export const App = () => {
   }
 
   if (search) {
-    matchingRecipes = matchingRecipes.filter(({ recipe }) => {
-      console.log(recipe);
-      return (
+    matchingRecipes = matchingRecipes.filter(
+      ({ recipe }) =>
         matchByLabel(recipe, search) || matchByHealthLabels(recipe, search)
-      );
-    });
+    );
   }
 
   return (
@@ -61,8 +59,9 @@ export const App = () => {
         <>
           <Box textAlign="center" pt={10} px={6}>
             <Heading
-              as="h2"
-              size="xl"
+              lineHeight={1.1}
+              fontWeight={600}
+              fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
               mt={6}
               mb={2}
               color={useColorModeValue("gray.700", "white")}
