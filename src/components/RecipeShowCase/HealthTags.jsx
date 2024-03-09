@@ -1,4 +1,4 @@
-import { Tags } from "../Tags";
+import { Tags } from "../common/Tags";
 
 export const HealthTags = ({ tags }) => {
   const filterdTags = tags.filter(

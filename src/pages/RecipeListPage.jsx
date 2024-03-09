@@ -1,5 +1,5 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import { RecipeShowCase } from "../components/RecipeShowCase/RecipeShowCase";
+import { RecipeShowCase } from "../components/recipeShowCase/RecipeShowCase";
 
 export const RecipeListPage = ({ recipes, onRecipesClicked, ...rest }) => {
   const renderedReRecipes = recipes.map((recipeHolder) => {

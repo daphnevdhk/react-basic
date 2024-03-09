@@ -13,7 +13,7 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
-import { Tags } from "../components/Tags";
+import { Tags } from "../components/common/Tags";
 import { SideBySideCollection } from "../components/recipePage/SideBySideItemCollection";
 import { TopicTitle } from "../components/recipePage/TopicTitle";
 import { NutrientDetails } from "../components/recipePage/NutrientDetails";

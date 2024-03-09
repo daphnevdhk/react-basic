@@ -3,8 +3,8 @@ import { RecipePage } from "./pages/RecipePage";
 import { Box, Heading, useColorModeValue } from "@chakra-ui/react";
 import { data } from "./utils/data";
 import { useState } from "react";
-import { Search } from "./components/Search";
-import { HealthLabelsFilter } from "./components/HealthLabelsFilter";
+import { Search } from "./components/common/Search";
+import { HealthLabelsFilter } from "./components/common/HealthLabelsFilter";
 
 export const App = () => {
   // Your state code here

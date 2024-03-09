@@ -8,7 +8,7 @@ import {
   LinkBox,
   LinkOverlay,
 } from "@chakra-ui/react";
-import { Tags } from "../Tags";
+import { Tags } from "../common/Tags";
 import { HealthTags } from "./HealthTags";
 
 export const RecipeShowCase = ({ recipe, ...rest }) => {
